@@ -173,20 +173,18 @@ namespace LB_1_2
             return result;
         }
 
-        // Для виводу списку у вигляді рядка
+        // Для виводу списку
 
-        public override string ToString()
+        public void Print()
         {
-            if (next != null)
-            {
-                return info + " -> " + next.ToString();
+            RList current = this;
 
-            }
-            else
+            while (current != null)
             {
-                return info + " -> null";
+                Console.Write(current.info + " -> ");
+                current = current.next;
             }
-
+            Console.WriteLine();
         }
         class Program
         {
@@ -195,52 +193,62 @@ namespace LB_1_2
                 Console.WriteLine("----Перевiрка----");
 
                 RList original = new RList(1, new RList(2, new RList(3)));
-                Console.WriteLine("Оригiнал: " + original);
+                Console.WriteLine("Оригiнал: ");
+                original.Print();
                 RList cloned = new RList(original);
 
                 original.info = 10;
                 original.next.info = 20;
 
-                Console.WriteLine("Оигiнал (пiсля змiн): " + original);
-                Console.WriteLine("Копiя: " + cloned);
+                Console.WriteLine("Оигiнал (пiсля змiн): ");
+                original.Print();
+                Console.WriteLine("Копiя: ");
+                cloned.Print();
 
                 Console.WriteLine();
 
                 RList testList = new RList(10, new RList(30));
                 testList.AddLast(40);
-                Console.WriteLine("Список пiсля додавання: " + testList);
+                Console.WriteLine("Список пiсля додавання: ");
+                testList.Print();
 
                 Console.WriteLine();
 
                 testList.AddAfter(10, 20);
-                Console.WriteLine("Додано 20 пiсля 10 в тестовому списку:" + testList);
+                Console.WriteLine("Додано 20 пiсля 10 в тестовому списку:");
+                testList.Print();
                 testList.AddAfter(40, 50);
-                Console.WriteLine("Додано 50 пiсля 40 в тестовому списку:" + testList);
+                Console.WriteLine("Додано 50 пiсля 40 в тестовому списку:");
+                testList.Print();
 
                 Console.WriteLine();
 
                 testList.RemoveLast();
-                Console.WriteLine("Список пiсля видалення останнього елемента:" + testList);
+                Console.WriteLine("Список пiсля видалення останнього елемента:");
+                testList.Print();
 
                 Console.WriteLine();
 
                 RList test2List = new RList(1, new RList(2, new RList(3, new RList(4, new RList(5)))));
                 test2List.RemoveAt(4);
-                Console.WriteLine("Список пiсля видалення 4-го елемента:" + test2List);
+                Console.WriteLine("Список пiсля видалення 4-го елемента:");
+                test2List.Print();
 
                 Console.WriteLine();
 
                 RList printtestList = new RList(1, new RList(2, new RList(3, new RList(4, new RList(5)))));
-                Console.WriteLine("Повний список: " + printtestList);
+                Console.WriteLine("Повний список: ");
+                printtestList.Print();
                 printtestList.PrintOddValues();
 
                 Console.WriteLine();
                 Console.WriteLine();
 
                 RList sumtestList = new RList(10, new RList(20, new RList(30, new RList(40, new RList(50)))));
-                Console.WriteLine("Список для пiдрахунку суми: " + sumtestList);
+                Console.WriteLine("Список для пiдрахунку суми: ");
+                sumtestList.Print();
                 int totalSum = sumtestList.Sum();
-                Console.WriteLine("Сума елементів списку: " + totalSum);
+                Console.WriteLine("Сума елементiв списку: " + totalSum);
 
                 Console.WriteLine();
 
@@ -253,19 +261,24 @@ namespace LB_1_2
 
                 RList A = new RList(10, new RList(20));
                 RList B = new RList(1, new RList(2, new RList(3)));
-                Console.WriteLine("Список A: " + A);
-                Console.WriteLine("Список B: " + B);
+                Console.WriteLine("Список A: ");
+                A.Print();
+                Console.WriteLine("Список B: ");
+                B.Print();
                 RList C = A + B;
-                Console.WriteLine(C);
+                Console.WriteLine("Список C: ");
+                C.Print();
 
                 Console.WriteLine();
 
                 RList D = new RList(5, new RList(10, new RList(15)));
-                Console.WriteLine("Список D: " + D);
+                Console.WriteLine("Список D: ");
+                D.Print();
                 RList E = D++;
-                Console.WriteLine("Список D пiсля операцiї ++: " + D);
-
+                Console.WriteLine("Список D пiсля операцiї ++: ");
+                E.Print();
             }
         }
     }
 }
+
